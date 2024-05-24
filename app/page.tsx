@@ -131,8 +131,8 @@ const Home: React.FC = () => {
               className="carousel-grid flex transition-transform duration-500"
               style={{ transform: getGridPosition() }}
             >
-              {articles.map((article, index) => (
-                <div className="carousel-item flex-none w-1/3 p-4" key={index}>
+              {articles.map((article) => (
+                <div className="carousel-item flex-none w-1/3 p-4" key={article.id}>
                   <div className="relative w-full h-48 rounded-t-xl overflow-hidden">
                     <Image
                       src={article.image}
