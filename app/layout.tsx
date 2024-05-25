@@ -1,13 +1,11 @@
-"use client"; // Add this at the top
+// app/layout.tsx
+"use client"; // Mark this file as a client component
 
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import useHotjar from '@/app/hotjar'; // Adjust the path according to your project structure
-
-const siteId = 4997446;
-const hotjarVersion = 6;
+import HotjarClient from '@/app/hotjar'; // Adjust the path according to your project structure
 
 const monsterrat = Montserrat({ subsets: ["latin"] });
 
@@ -21,12 +19,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useHotjar(siteId, hotjarVersion);
-
   return (
     <html lang="nl">
       <body className={monsterrat.className}>
         <Navbar />
+        <HotjarClient /> {/* Initialize Hotjar here */}
         {children}
       </body>
     </html>
