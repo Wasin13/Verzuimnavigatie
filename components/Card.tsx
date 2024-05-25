@@ -1,4 +1,6 @@
+// components/Card.tsx
 import React from "react";
+import Button from "@/components/Button";
 
 interface CardProps {
   title: string;
@@ -22,9 +24,28 @@ const Card: React.FC<CardProps> = ({
       <div className="mt-auto">
         <p className="text-sm text-gray-700 mb-4">{category}</p>
         {buttonText && (
-          <button className="bg-primary text-black rounded-full py-2 px-4 mt-2 hover:bg-black hover:text-white transition duration-300">
-            {buttonText}
-          </button>
+          category === "Artikelen" ? (
+            <Button
+              href="/artikelen"
+              buttonStyle="btn--primary"
+              buttonSize="btn--medium"
+            >
+              {buttonText}
+            </Button>
+          ) : (
+            <Button
+              buttonStyle="btn--primary"
+              buttonSize="btn--medium"
+              width="auto"
+              height="auto"
+              backgroundColor="primary"
+              textColor="black"
+              borderColor="primary"
+              margin="0"
+            >
+              {buttonText}
+            </Button>
+          )
         )}
       </div>
     </div>

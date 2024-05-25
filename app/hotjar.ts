@@ -1,5 +1,5 @@
 // components/HotjarClient.tsx
-"use client"; // Mark this file as a client component
+"use client";
 
 import { useEffect } from 'react';
 import Hotjar from '@hotjar/browser';
@@ -9,8 +9,11 @@ const hotjarVersion = 6;
 
 const HotjarClient = () => {
   useEffect(() => {
-    Hotjar.init(siteId, hotjarVersion);
-    console.log('Hotjar initialized');
+    if (typeof window !== 'undefined') {
+      console.log('Initializing Hotjar'); // Debug log
+      Hotjar.init(siteId, hotjarVersion);
+      console.log('Hotjar initialized'); // Debug log
+    }
   }, []);
 
   return null;

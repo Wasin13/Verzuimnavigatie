@@ -1,11 +1,9 @@
 // app/layout.tsx
-"use client"; // Mark this file as a client component
-
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import HotjarClient from '@/app/hotjar'; // Adjust the path according to your project structure
+import HotjarClient from "@/app/hotjar"; // Adjust the path according to your project structure
 
 const monsterrat = Montserrat({ subsets: ["latin"] });
 

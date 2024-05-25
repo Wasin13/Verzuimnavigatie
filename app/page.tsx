@@ -8,6 +8,7 @@ import Card from "@/components/Card";
 import SearchBar from "@/components/Searchbar";
 import Footer from "@/components/Footer";
 import articles from "@/app/artikelen/articlesData"; // Import the common data source
+import Link from 'next/link';
 
 const Home: React.FC = () => {
   const [current, setCurrent] = useState(0);
@@ -133,18 +134,20 @@ const Home: React.FC = () => {
             >
               {articles.map((article) => (
                 <div className="carousel-item flex-none w-1/3 p-4" key={article.id}>
-                  <div className="relative w-full h-48 rounded-t-xl overflow-hidden">
-                    <Image
-                      src={article.image}
-                      alt={article.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-xl"
-                    />
-                    <div className="carousel-readtime absolute top-2 right-2 bg-white/20 text-white text-xs py-1 px-2 rounded-full backdrop-blur-lg">
-                      {article.readTime}
+                  <Link href={`/artikelen/${article.id}`}>
+                    <div className="relative w-full h-48 rounded-t-xl overflow-hidden cursor-pointer">
+                      <Image
+                        src={article.image}
+                        alt={article.title}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-t-xl"
+                      />
+                      <div className="carousel-readtime absolute top-2 right-2 bg-white/20 text-white text-xs py-1 px-2 rounded-full backdrop-blur-lg">
+                        {article.readTime}
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                   <div className="h-72 carousel-text bg-[#f4eeea] rounded-b-xl p-4 text-left relative flex flex-col">
                     <h3 className="font-montserrat text-xl mb-2">
                       {article.title}
@@ -156,9 +159,11 @@ const Home: React.FC = () => {
                       <p className="text-sm text-gray-700 mb-4">
                         {article.category}
                       </p>
-                      <button className="bg-[#f5b741] text-black rounded-full py-2 px-4 mt-2 flex items-center justify-center transition-colors duration-300 hover:bg-black hover:text-white">
-                        <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                      </button>
+                      <Link href={`/artikelen/${article.id}`}>
+                        <button className="bg-[#f5b741] text-black rounded-full py-2 px-4 mt-2 flex items-center justify-center transition-colors duration-300 hover:bg-black hover:text-white">
+                          <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
